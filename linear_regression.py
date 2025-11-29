@@ -8,4 +8,12 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import math
+
+data = pd.read_csv(r"C:\Users\sorin.creanga\Desktop\Math_for_ML_Models\Salary_Data[1].csv", index_col=0)
+
+
+salaries = [_ for _ in data["Salary"] if not math.isnan(_)]
+experience_year = [_ for _ in data["Years of Experience"]if not (math.isnan(_))]
+
 
