@@ -15,6 +15,7 @@ data = pd.read_csv(r"C:\Users\sorin.creanga\Desktop\Math_for_ML_Models\Salary_Da
 
 salaries = [_ for _ in data["Salary"] if not math.isnan(_)]
 experience_year = [_ for _ in data["Years of Experience"]if not (math.isnan(_))]
+experience_year = experience_year[:len(salaries)]
 
 
 mean_salaries = sum(salaries)/len(salaries)
@@ -28,8 +29,8 @@ print(
 )
 """
 
-var_salaries = math.sqrt(sum((_ - mean_salaries)**2 for _ in salaries))
-var_experience_years = math.sqrt(sum((_ - mean_experience_year)**2 for _ in experience_year))
+st_salaries = math.sqrt((sum((_ - mean_salaries)**2 for _ in salaries))/len(salaries))
+st_experience_years = math.sqrt((sum((_ - mean_experience_year)**2 for _ in experience_year))/len(experience_year))
 
 
 covariance = (
@@ -39,4 +40,8 @@ covariance = (
     )  
     / (len(salaries) - 1)
 )
+
+pearson_correlation= covariance / (st_salaries*st_experience_years)
+
+print(f"The Pearson Coef: {round(pearson_correlation,2)}")
 
