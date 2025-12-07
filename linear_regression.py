@@ -45,3 +45,15 @@ pearson_correlation= covariance / (st_salaries*st_experience_years)
 
 print(f"The Pearson Coef: {round(pearson_correlation,2)}")
 
+"""
+Please find below a basic visual representation of the the Salaries and Experience Years
+variables in a scatter plot.
+
+The red line describes the slope of the relationship showcasing the rate at which the salaries
+grow as experience grows.
+
+Feel free to take the chart out of the comment section and try it out on your machine.
+
+**Chart**
+
+"""
