@@ -10,13 +10,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import math
 
-# NOTE: You will need to ensure this path is correct on your machine.
+
 data = pd.read_csv(r"C:\Users\sorin.creanga\Desktop\Math_for_ML_Models\Salary_Data[1].csv", index_col=0)
 
 
 cleaned_data = data.dropna(subset=['Salary', 'Years of Experience'])
 
-# Extract the correctly aligned lists
+
 salaries = cleaned_data["Salary"].tolist()
 experience_year = cleaned_data["Years of Experience"].tolist()
 
@@ -34,7 +34,7 @@ print(
 )
 """
 
-# FIX: Ensure N-1 is used for unbiased sample standard deviation, aligning with covariance.
+
 st_salaries = math.sqrt((sum((_ - mean_salaries)**2 for _ in salaries))/(len(salaries) - 1))
 st_experience_years = math.sqrt((sum((_ - mean_experience_year)**2 for _ in experience_year))/(len(experience_year) - 1))
 
@@ -68,7 +68,7 @@ slope_m = covariance / (st_experience_years**2)
 b_for_slope = mean_salaries-(slope_m*mean_experience_year)
 Y_predicted_manual = [(slope_m * x_val) + b_for_slope for x_val in experience_year]
 
-# --- Regression Line Calculation ---
+# Regression Line Calculation
 
 # 1. Calculate the Slope (m)
 # Formula: m = Covariance(X, Y) / Variance(X)
@@ -85,7 +85,7 @@ Y_predicted_manual = [slope_m * x + b_for_slope for x in experience_year]
 print(f"Calculated Slope (m): {slope_m}")
 print(f"Calculated Intercept (b): {b_for_slope}")
 
-# --- Plotting the Regression Line ---
+# Plotting 
 
 plt.figure(figsize=(10,6))
 
